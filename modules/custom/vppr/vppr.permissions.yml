@@ -1,15 +1,19 @@
-administer filters:
-  title: 'Hello title'
-  description: 'Hello description.'
-  restrict access: TRUE
+# administer filters:
+#   title: 'Hello title'
+#   description: 'Hello description.'
+#   restrict access: TRUE
+
+# permission_callbacks:
+#   - Drupal\vppr\VpprPermissions::permissions
+
+
+
+
+#vppr test_permission:
+#  title: 'My Test Permission'
+#  description: 'The description'
+#  restrict access: TRUE
 
 permission_callbacks:
   - Drupal\vppr\VpprPermissions::permissions
 
-
-vppr test_permission:
-    title: 'My Test Permission'
-    description: 'The description'
-    restrict access: TRUE
-
-    

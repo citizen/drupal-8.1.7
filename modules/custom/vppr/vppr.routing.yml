@@ -11,13 +11,13 @@
 
 
 
-vppr.home:
-  path: 'admin/structure/taxonomy'
-  defaults:
-    _controller: '\Drupal\vppr\Controller\VpprController::access'
-    _title: 'My test Home'
-  requirements:
-    _permission: 'administer test vocabulary terms'
+# vppr.home:
+#   path: 'admin/structure/taxonomy'
+#   defaults:
+#     _controller: '\Drupal\vppr\Controller\VpprController::access'
+#     _title: 'My test Home'
+#   requirements:
+#     _permission: 'administer test vocabulary terms'
 
 
 
@@ -34,10 +34,10 @@ vppr.home:
 
 
 
-entity.taxonomy_vocabulary.collection:
-  path: '/admin/structure/taxonomy'
-  defaults:
-    _entity_list: 'taxonomy_vocabulary'
-    _title: 'Taxonomy'
-  requirements:
-    _permission: 'vppr test_permission'
+# entity.taxonomy_vocabulary.collection:
+#   path: '/admin/structure/taxonomy'
+#   defaults:
+#     _entity_list: 'taxonomy_vocabulary'
+#     _title: 'Taxonomy'
+#   requirements:
+#     _permission: 'vppr test_permission'

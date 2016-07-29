@@ -11,6 +11,10 @@ use Drupal\Core\Routing\RouteSubscriberBase;
 use Symfony\Component\Routing\RouteCollection;
 use Drupal\taxonomy\Entity\Vocabulary;
 
+
+
+
+
 //class VpprAlterRouteSubscriber implements EventSubscriberInterface {
 //
 //  /**
@@ -46,18 +50,32 @@ use Drupal\taxonomy\Entity\Vocabulary;
 
 class RouteSubscriber extends RouteSubscriberBase {
 
+
+// public static function getSubscribedEvents() {
+//    $events[RoutingEvents::ALTER] = 'alterRoutes';
+//    return $events;
+//  }
+
+
+
   /**
    * {@inheritdoc}
    */
   public function alterRoutes(RouteCollection $collection) {
-    print "collection";
+    // print "collection";
 //    print '<pre>'; print_r($collection); print '</pre>';
     // dpm("collection");
     // dpm($collection);
     // Change path '/user/login' to '/login'.
+
+
+
+
     if ($route = $collection->get('entity.taxonomy_vocabulary.collection')) {
-      $route->setRequirement('_permission', 'Hello title');
-//      print '<pre>'; print_r($route); print '</pre>';
+      // $route->setRequirement('_permission', 'Hello title');
+
+//        dpm("route");
+//        dpm($route);
 
 
 
@@ -67,6 +85,7 @@ class RouteSubscriber extends RouteSubscriberBase {
         $perms['administer ' . $vocabulary->id() . ' vocabulary terms'] = array(
           'title' => t('Administer %name vocabulary terms', array('%name' => $vocabulary->label())),
         );
+        $route->setRequirement('_permission', 'administer ' . $vocabulary->id() . ' vocabulary terms');
       }
 
 
@@ -74,13 +93,23 @@ class RouteSubscriber extends RouteSubscriberBase {
       // dpm("route");
       // dpm($route);
 //      $route->setPath('/login');
+//        print '<pre>'; print_r($route); print '</pre>';exit;
     }
+    elseif ($route = $collection->get('entity.taxonomy_term.add_form')) {
+
+    }
+
+
     // Always deny access to '/user/logout'.
     // Note that the second parameter of setRequirement() is a string.
 //    if ($route = $collection->get('user.logout')) {
 //      $route->setRequirement('_access', 'FALSE');
 //    }
   }
+
+
+
+  
 
 
 //  public function routes(RouteCollection $collection) {

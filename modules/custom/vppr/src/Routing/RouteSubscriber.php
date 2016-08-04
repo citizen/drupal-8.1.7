@@ -72,6 +72,23 @@ class RouteSubscriber extends RouteSubscriberBase {
       $names = taxonomy_vocabulary_get_names();
       $vocabularies = Vocabulary::loadMultiple($names);
 
+      if ($route = $collection->get('entity.taxonomy_term.add_form')) {
+
+//          $route->setRequirement('_permission', 'administer test vocabulary terms');
+        foreach ($vocabularies as $vocabulary) {
+//            $perms['administer ' . $vocabulary->id() . ' vocabulary terms'] = array(
+//                'title' => t('Administer %name vocabulary terms', array('%name' => $vocabulary->label())),
+//            );
+            if($taxonomy_vocabulary == $vocabulary->id) {
+                $route->setRequirement('_permission', 'administer ' . $vocabulary->id() . ' vocabulary terms');
+            }
+
+        }
+//        print '<pre>'; print_r($taxonomy_vocabulary); print '</pre>';exit;
+//        print '<pre>'; print_r($route); print '</pre>';exit;
+
+      }
+
     if ($route = $collection->get('entity.taxonomy_vocabulary.collection')) {
       // $route->setRequirement('_permission', 'Hello title');
 
@@ -95,22 +112,7 @@ class RouteSubscriber extends RouteSubscriberBase {
 //      $route->setPath('/login');
 //        print '<pre>'; print_r($route); print '</pre>';exit;
     }
-    if ($route = $collection->get('entity.taxonomy_term.add_form')) {
 
-        $route->setRequirement('_permission', 'administer test vocabulary terms');
-//        foreach ($vocabularies as $vocabulary) {
-////            $perms['administer ' . $vocabulary->id() . ' vocabulary terms'] = array(
-////                'title' => t('Administer %name vocabulary terms', array('%name' => $vocabulary->label())),
-////            );
-//            if($taxonomy_vocabulary == $vocabulary->id) {
-//                $route->setRequirement('_permission', 'administer ' . $vocabulary->id() . ' vocabulary terms');
-//            }
-//
-//        }
-//        print '<pre>'; print_r($taxonomy_vocabulary); print '</pre>';exit;
-//        print '<pre>'; print_r($route); print '</pre>';exit;
-
-    }
 
 
     // Always deny access to '/user/logout'.
